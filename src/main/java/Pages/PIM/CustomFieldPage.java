@@ -24,9 +24,12 @@ public class CustomFieldPage {
     By TypeOption = By.xpath("//span[contains(text(), 'Text or Number')]");
     By message = By.xpath("//div[@id='oxd-toaster_1']/div/div");
     By messageClose = By.xpath("//div[@id='oxd-toaster_1']/div/div[@class='oxd-toast-close-container']/div");
-    By DeleteButton = By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[3]/div/div[2]/div[1]/div/div[5]/div/button[1]/i");
+    By DeleteButton = By.xpath("//i[@class='oxd-icon bi-trash']");
+
+    By YesDeleteButton = By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin']");
 
     WebElement DeleteButtonElement;
+    WebElement YesDeleteButtonElement;
     WebElement ScreenOptionElement;
     WebElement TypeOptionElement;
     WebElement ConfigurationMenuElement;
@@ -58,14 +61,7 @@ public class CustomFieldPage {
         Helper.click(AddButtonElement);
     }
 
-    public void NavigateToDeleteCustomField() {
-        NavigateToCustomField();
-        DeleteButtonElement = CustomFieldDriver.findElement(DeleteButton);
-        Helper.click(AddButtonElement);
-    }
-
     public void addFieldName(String fieldName) {
-
         CustomFieldDriver.findElement(FieldName).sendKeys(fieldName);
     }
 
@@ -97,7 +93,6 @@ public class CustomFieldPage {
     }
     public void addCustomField(String fieldName)
     {
-        NavigateToAddCustomField();
         addFieldName(fieldName);
         selectScreen();
         selectType();
@@ -106,9 +101,11 @@ public class CustomFieldPage {
 
     public void deleteCustomField()
     {
-        NavigateToDeleteCustomField();
         DeleteButtonElement = CustomFieldDriver.findElement(DeleteButton);
         Helper.click(DeleteButtonElement);
+        YesDeleteButtonElement = CustomFieldDriver.findElement(YesDeleteButton);
+        Helper.click(YesDeleteButtonElement);
+
     }
 
 }

@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 public class CustomFieldTest extends BaseTest {
     String SuccessMessage = "Success";
+    String fieldName = "Blood";
     private Navbar navbar;
     private CustomFieldPage CustomFieldPage;
 
@@ -33,26 +34,26 @@ public class CustomFieldTest extends BaseTest {
     @Issue("https://ahmed22968337.atlassian.net/browse/DEPI235-38")
     @Test(
             testName = "TC-38",
-            dependsOnMethods = "navigateAddCustomField",
+            dependsOnMethods = "navigateToAddCustomField",
             description = "This test will Verify that admin can add custom field"
     )
     public void addCustomField() {
-        CustomFieldPage.addCustomField("Nouran");
+        CustomFieldPage.addCustomField(fieldName);
         Assert.assertTrue(CustomFieldPage.getMessage().contains(SuccessMessage), "The message is not displayed");
         CustomFieldPage.closeMessage();
     }
-//    @Owner("Nouran")
-//    @Issue("https://ahmed22968337.atlassian.net/browse/DEPI235-44")
-//    @Test(
-//            testName = "TC-44",
-//            dependsOnMethods = "navigateToAddCustomField",
-//            description = "This test will Verify that admin can delete custom field"
-//    )
-//    public void deleteCustomField() {
-//        CustomFieldPage.deleteCustomField();
-//        Assert.assertTrue(CustomFieldPage.getMessage().contains(SuccessMessage), "The message is not displayed");
-//        CustomFieldPage.closeMessage();
-//    }
+    @Owner("Nouran")
+    @Issue("https://ahmed22968337.atlassian.net/browse/DEPI235-44")
+    @Test(
+            testName = "TC-44",
+            dependsOnMethods = "addCustomField",
+            description = "This test will Verify that admin can delete custom field"
+    )
+    public void deleteCustomField() {
+        CustomFieldPage.deleteCustomField();
+        Assert.assertTrue(CustomFieldPage.getMessage().contains(SuccessMessage), "The message is not displayed");
+        CustomFieldPage.closeMessage();
+    }
 }
 
 

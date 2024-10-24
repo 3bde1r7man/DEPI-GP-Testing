@@ -130,6 +130,5 @@ public class ApplyPage {
         SelectDuration();
         SetComment(comment);
         ClickApply();
-
     }
 }

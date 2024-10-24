@@ -16,13 +16,14 @@ public class VacanciesPage {
     By filterHeader = By.xpath("//div[@class='oxd-table-filter-header']");
     By addButton = By.xpath("//div[@class='orangehrm-header-container']");
     By vacanciesContainer = By.xpath("//div[@class='orangehrm-bottom-container']");
+    By title = By.xpath("//h5");
 
 
     // Elements
     WebElement viewNavTabElement;
     WebElement filterHeaderElement;
     WebElement addButtonElement;
-    WebElement vacanciesContainerElement;
+    WebElement titleElement;
 
     // Constructor
     public VacanciesPage(WebDriver driver) { vacanciesPageDriver = driver; }
@@ -40,11 +41,10 @@ public class VacanciesPage {
 
     }
 
-    public void navigateToVacanciesContainer()
+    public String getTitle()
     {
-        // View vacancies container
-        vacanciesContainerElement = vacanciesPageDriver.findElement(vacanciesContainer);
-        Helper.click(vacanciesContainerElement);
+        titleElement = vacanciesPageDriver.findElement(title);
+        return titleElement.getText();
     }
 }
 

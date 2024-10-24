@@ -10,7 +10,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class ReportsTest extends BaseTest {
-    String SuccessMessage = "Success";
     private Navbar navbar;
     private ReportsPage reportsPage;
 
@@ -27,7 +26,7 @@ public class ReportsTest extends BaseTest {
         navbar.navigatePIM();
         reportsPage.NavigateToReportPage();
     }
-    /*
+
     @Owner("Nouran")
     @Issue("https://ahmed22968337.atlassian.net/browse/DEPI235-379")
     @Test(
@@ -36,10 +35,21 @@ public class ReportsTest extends BaseTest {
             description = "This test will Verify that admin can search to Reports"
     )
     public void searchReports() {
-        navbar.navigatePIM();
-        reportsPage.NavigateToReportPage();
-        reportsPage.searchReports("Employee");
-    }*/
+        reportsPage.SearchedReportName("Employee");
+
+    }
+    @Owner("Nouran")
+    @Issue("https://ahmed22968337.atlassian.net/browse/DEPI235-379")
+    @Test(
+            testName = "TC-5",
+            dependsOnMethods = "navigateToReports",
+            description = "This test will Verify that admin can Reset the search "
+    )
+    public void ResetSearch() {
+        reportsPage.clickOnResetButton();
+
+    }
+
 
 
 }
